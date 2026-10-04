@@ -1,0 +1,302 @@
+/* =========================================================
+   SURPRISE ASK PAGE: "I made something special for u"
+   Canva doodle font, Bubu in gift box GIF, and big YES/NO buttons
+   ========================================================= */
+
+.surprise-ask-page {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  
+  /* Soft Pastel Cream / Blush Pink Backdrop matching reference */
+  background: radial-gradient(circle at center, #fffbfc 0%, #fdf3f6 60%, #fae6ec 100%);
+  user-select: none;
+}
+
+/* --- Ambient Floating Background Sparkles & Big Heart --- */
+.surprise-ambient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.surprise-doodles-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.surprise-doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 6px rgba(255, 77, 121, 0.22));
+}
+
+.sd-top-left {
+  top: 3%;
+  left: 4%;
+}
+
+.sd-top-right {
+  top: 3%;
+  right: 5%;
+}
+
+.sd-mid-left {
+  top: 45%;
+  left: 3.5%;
+}
+
+.sd-mid-right {
+  top: 42%;
+  right: 3.5%;
+}
+
+.sd-bottom-sparkle {
+  bottom: 12%;
+  left: 12%;
+}
+
+/* --- Main Content Wrapper (Strict 100vh vertical distribution) --- */
+.surprise-ask-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  max-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8vh 1rem 5vh 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* =========================================================
+   HEADER: "I made something special for u / do u wanna see it?"
+   ========================================================= */
+.surprise-header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1vh;
+}
+
+.surprise-title-main {
+  font-family: 'Fredoka', 'Chewy', 'DynaPuff', 'Nunito', cursive, sans-serif;
+  font-size: clamp(1.75rem, 5.8vw, 2.45rem);
+  font-weight: 900;
+  color: #c92a2a;
+  -webkit-text-stroke: 1.8px #5c1414;
+  text-shadow: 2px 3px 0px #5c1414, 0 6px 14px rgba(92, 20, 20, 0.2);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.surprise-title-sub {
+  font-family: 'Fredoka', 'Chewy', 'DynaPuff', 'Nunito', cursive, sans-serif;
+  font-size: clamp(1.55rem, 5.2vw, 2.15rem);
+  font-weight: 900;
+  color: #c92a2a;
+  -webkit-text-stroke: 1.6px #5c1414;
+  text-shadow: 2px 2.5px 0px #5c1414, 0 5px 12px rgba(92, 20, 20, 0.2);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+/* =========================================================
+   CENTER: BUBU IN GIFT BOX GIF STAGE
+   ========================================================= */
+.surprise-gif-stage {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  flex: 1;
+  max-height: 46vh;
+}
+
+.gift-box-glow-backdrop {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(160, 224, 214, 0.35) 0%, rgba(255, 182, 193, 0.25) 60%, transparent 80%);
+  filter: blur(20px);
+  z-index: 1;
+}
+
+.surprise-bubu-dudu-gif {
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  max-width: 340px;
+  height: auto;
+  max-height: 38vh;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.12));
+}
+
+.gift-heart-float-1 {
+  position: absolute;
+  top: 10%;
+  left: 8%;
+  font-size: 1.6rem;
+  z-index: 10;
+}
+
+.gift-heart-float-2 {
+  position: absolute;
+  top: 8%;
+  right: 10%;
+  font-size: 1.7rem;
+  z-index: 10;
+}
+
+/* Playful tooltip */
+.playful-bubble-tooltip {
+  background: #fff0f3;
+  border: 2px solid #ff4d79;
+  color: #c92a2a;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(255, 77, 121, 0.25);
+  margin-bottom: 0.75rem;
+  z-index: 15;
+}
+
+/* =========================================================
+   BOTTOM BUTTONS: BIG YES AND NO
+   ========================================================= */
+.surprise-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  width: 100%;
+  margin-bottom: 3.5vh;
+  position: relative;
+  z-index: 20;
+}
+
+/* YES BUTTON: Vibrant Orange Pill */
+.btn-surprise-yes {
+  background: #f05a28;
+  border: 3.5px solid #ffffff;
+  border-radius: var(--radius-full);
+  padding: 0.65rem 2.8rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(240, 90, 40, 0.45);
+  transition: all var(--transition-spring);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-surprise-yes:hover {
+  transform: scale(1.1) translateY(-2px);
+  background: #e8590c;
+  box-shadow: 0 8px 24px rgba(232, 89, 12, 0.55);
+}
+
+.btn-surprise-yes:active {
+  transform: scale(0.96);
+}
+
+/* NO BUTTON: Deep Coral-Red Pill */
+.btn-surprise-no {
+  background: #c92a2a;
+  border: 3.5px solid #ffffff;
+  border-radius: var(--radius-full);
+  padding: 0.65rem 2.8rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(201, 42, 42, 0.45);
+  transition: all var(--transition-fast);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-surprise-no:hover {
+  background: #b02525;
+}
+
+.btn-surprise-text {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2.5px;
+  line-height: 1;
+}
+
+/* =========================================================
+   TABLET / DESKTOP RESPONSIVENESS
+   ========================================================= */
+@media (min-width: 768px) {
+  .surprise-ask-content {
+    max-width: 620px;
+    padding: 9vh 2rem 6vh 2rem;
+  }
+
+  .surprise-title-main {
+    font-size: 2.8rem;
+  }
+
+  .surprise-title-sub {
+    font-size: 2.4rem;
+  }
+
+  .surprise-bubu-dudu-gif {
+    max-width: 420px;
+  }
+
+  .btn-surprise-yes,
+  .btn-surprise-no {
+    padding: 0.8rem 3.4rem;
+  }
+
+  .btn-surprise-text {
+    font-size: 2.1rem;
+  }
+}

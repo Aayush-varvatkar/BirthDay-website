@@ -1,0 +1,16 @@
+.doodle-icon {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform var(--transition-fast);
+  user-select: none;
+  pointer-events: none;
+}
+
+.doodle-icon.interactive {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.doodle-icon.interactive:hover {
+  transform: scale(1.2) rotate(8deg);
+}

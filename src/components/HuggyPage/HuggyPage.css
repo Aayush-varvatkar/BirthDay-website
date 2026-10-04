@@ -1,0 +1,275 @@
+/* =========================================================
+   HUGGY PAGE: "Givee me Huggyy huggyyy.. 🫣"
+   Matching Puuung's warm vintage watercolor aesthetic (#ebdcc3)
+   ========================================================= */
+
+.huggy-page-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* Matching the exact warm watercolor parchment background of the GIF */
+  background: #ebdcc3 radial-gradient(circle at 50% 40%, #f3e6d2 0%, #ebdcc3 65%, #dfcdb0 100%);
+  z-index: 50;
+  user-select: none;
+  font-family: 'Poppins', 'Outfit', 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+}
+
+/* Ambient Doodles Layer */
+.huggy-ambient-doodles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.huggy-doodle {
+  position: absolute;
+  opacity: 0.75;
+  filter: drop-shadow(0 2px 4px rgba(115, 65, 45, 0.12));
+}
+
+.hd-top-left {
+  top: 5%;
+  left: 6%;
+}
+
+.hd-top-right {
+  top: 6%;
+  right: 7%;
+}
+
+.hd-mid-left {
+  top: 50%;
+  left: 4.5%;
+}
+
+.hd-mid-right {
+  top: 46%;
+  right: 4.5%;
+}
+
+.hd-bot-left {
+  bottom: 8%;
+  left: 7%;
+}
+
+.hd-bot-right {
+  bottom: 7%;
+  right: 7%;
+}
+
+/* Main Content Wrapper */
+.huggy-content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 520px;
+  min-height: 100%;
+  padding: 0 1.2rem max(env(safe-area-inset-bottom, 1.8rem), 1.8rem) 1.2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================================================
+   HEADER: "Givee me Huggyy huggyyy.. 🫣..."
+   Simple & Minimalistic typography with 10% top margin
+   ========================================================= */
+.huggy-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 10%; /* 10% Top margin as requested */
+  margin-bottom: 0.6rem;
+}
+
+.huggy-heading-title {
+  font-family: 'Poppins', 'Outfit', 'Nunito', -apple-system, sans-serif;
+  font-size: clamp(1.28rem, 4.8vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.35;
+  color: #4a1924;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+  max-width: 95%;
+  word-break: break-word;
+}
+
+/* =========================================================
+   CENTER: PUUUNG GIF STAGE
+   ========================================================= */
+.huggy-gif-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.huggy-gif-card {
+  position: relative;
+  width: clamp(250px, 42vh, 350px);
+  max-width: 88vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.huggy-gif-glow-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 22px;
+  background: radial-gradient(circle, rgba(235, 185, 160, 0.5) 0%, rgba(220, 165, 140, 0) 70%);
+  filter: blur(10px);
+  z-index: 1;
+}
+
+.huggy-gif-inner-frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 3.5px solid #ffffff;
+  box-shadow: 0 12px 30px rgba(90, 45, 30, 0.16), 0 4px 10px rgba(0, 0, 0, 0.06);
+  background: #ebdcc3;
+  aspect-ratio: 320 / 212;
+}
+
+.puuung-gif-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Cute Emoji Badges around GIF */
+.huggy-badge-top-right {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 1.5rem;
+  z-index: 10;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.huggy-badge-bot-left {
+  position: absolute;
+  bottom: -8px;
+  left: -8px;
+  font-size: 1.5rem;
+  z-index: 10;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* =========================================================
+   TEXT SECTION: HEARTFELT MESSAGES
+   ========================================================= */
+.huggy-message-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.huggy-love-text {
+  font-family: 'Poppins', 'Outfit', 'Nunito', sans-serif;
+  font-size: clamp(0.95rem, 3.6vw, 1.18rem);
+  font-weight: 700;
+  line-height: 1.45;
+  color: #521927;
+  margin: 0;
+  max-width: 95%;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+  word-break: break-word;
+}
+
+.huggy-bday-again-text {
+  font-family: 'Poppins', 'Outfit', 'Nunito', sans-serif;
+  font-size: clamp(0.9rem, 3.4vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.5;
+  color: #611e30;
+  margin: 0;
+  max-width: 95%;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+  word-break: break-word;
+}
+
+/* =========================================================
+   BOTTOM FOOTER: "ALWAYS AND FOREVER..."
+   Directly on background (no box / no border / no buttons)
+   ========================================================= */
+.huggy-bottom-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+.huggy-forever-text {
+  font-family: 'Poppins', 'Outfit', 'Nunito', sans-serif;
+  font-size: clamp(0.95rem, 3.6vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #541724;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+  word-break: break-word;
+}
+
+/* =========================================================
+   RESPONSIVE OPTIMIZATIONS
+   ========================================================= */
+@media (max-height: 700px) {
+  .huggy-header {
+    margin-top: 6%;
+    margin-bottom: 0.3rem;
+  }
+
+  .huggy-heading-title {
+    font-size: clamp(1.15rem, 4.2vw, 1.45rem);
+  }
+
+  .huggy-gif-card {
+    width: clamp(210px, 34vh, 280px);
+  }
+
+  .huggy-love-text {
+    font-size: 0.9rem;
+  }
+
+  .huggy-bday-again-text {
+    font-size: 0.86rem;
+  }
+
+  .huggy-forever-text {
+    font-size: 0.92rem;
+  }
+}

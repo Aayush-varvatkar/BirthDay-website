@@ -1,0 +1,59 @@
+.handwritten-note {
+  position: relative;
+  padding: 1.5rem 1.25rem 1.25rem 1.25rem;
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-polaroid);
+  transition: transform var(--transition-spring);
+  margin: 1rem 0;
+}
+
+.handwritten-note:hover {
+  transform: scale(1.02) rotate(0deg) !important;
+}
+
+.note-bg-yellow {
+  background: #fff9db;
+  color: #5c4813;
+  border: 1px solid rgba(245, 215, 110, 0.4);
+}
+
+.note-bg-pink {
+  background: #ffe6ea;
+  color: #632230;
+  border: 1px solid rgba(255, 182, 193, 0.4);
+}
+
+.note-bg-lavender {
+  background: #f3e8ff;
+  color: #4a2870;
+  border: 1px solid rgba(216, 180, 254, 0.4);
+}
+
+.note-bg-mint {
+  background: #e6fcf5;
+  color: #1b4f3e;
+  border: 1px solid rgba(150, 242, 215, 0.4);
+}
+
+.note-bg-white {
+  background: #ffffff;
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.note-font-cursive {
+  font-family: var(--font-handwriting);
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+
+.note-font-hand {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.note-content {
+  position: relative;
+  z-index: 2;
+}

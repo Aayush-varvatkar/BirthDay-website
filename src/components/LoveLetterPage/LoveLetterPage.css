@@ -1,0 +1,321 @@
+/* =========================================================
+   LOVE LETTER PAGE: Minimalistic Full-Screen Letter View
+   Whitest-Pink Clean Typography on Deep Burgundy Background
+   ========================================================= */
+
+.love-letter-page {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  
+  /* Deep cinematic burgundy to velvet-black backdrop */
+  background: radial-gradient(circle at 50% 20%, #3d0412 0%, #1c0107 50%, #060002 100%);
+  user-select: none;
+}
+
+/* --- Ambient Floating Petals & Glows --- */
+.letter-ambient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.letter-crimson-orb-top {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 550px;
+  height: 250px;
+  background: radial-gradient(ellipse, rgba(255, 75, 110, 0.22) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+.letter-crimson-orb-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.12) 0%, rgba(255, 75, 110, 0.05) 50%, transparent 75%);
+  filter: blur(45px);
+}
+
+.letter-crimson-orb-bottom {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 450px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(220, 38, 38, 0.18) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+.floating-petal {
+  position: absolute;
+  font-size: 1.1rem;
+  pointer-events: none;
+  opacity: 0.75;
+  animation: floatPetal 6s ease-in-out infinite alternate;
+}
+
+.p-1 { top: 8%; left: 8%; animation-delay: 0s; font-size: 1.3rem; }
+.p-2 { top: 15%; right: 10%; animation-delay: 1.2s; font-size: 1rem; }
+.p-3 { bottom: 25%; left: 6%; animation-delay: 2.5s; font-size: 1.1rem; }
+.p-4 { bottom: 18%; right: 8%; animation-delay: 0.8s; font-size: 1.2rem; }
+.p-5 { top: 48%; right: 4%; animation-delay: 1.8s; font-size: 0.95rem; }
+
+@keyframes floatPetal {
+  0% { transform: translateY(0px) rotate(0deg) scale(0.9); opacity: 0.4; }
+  50% { transform: translateY(-15px) rotate(12deg) scale(1.1); opacity: 0.85; }
+  100% { transform: translateY(0px) rotate(-8deg) scale(0.95); opacity: 0.5; }
+}
+
+/* --- Main Viewport Wrapper (Maximized Space for Letter) --- */
+.love-letter-viewport {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  max-width: 580px;
+  max-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3.5vh 1.4rem 2.5vh 1.4rem;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   FULL-SCREEN LETTER CONTAINER (CLEAN & SPACIOUS)
+   ========================================================= */
+.direct-letter-container {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  max-height: 85vh;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0.2rem 0.2rem 0.2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Corner Doodles */
+.letter-floating-doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 5;
+}
+
+.d-top-left {
+  top: -8px;
+  left: 0px;
+}
+
+.d-bottom-left {
+  bottom: 8px;
+  left: 0px;
+}
+
+/* Top Right Mascot */
+.letter-mascot-corner {
+  position: absolute;
+  top: -6px;
+  right: 4px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.letter-mascot-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(255, 75, 110, 0.3));
+}
+
+/* Scrollable Text Area (Completely Hidden Scrollbar) */
+.direct-letter-scroll {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.2rem;
+  padding-top: 0.2rem;
+  margin: 0.2rem 0 0.4rem 0;
+  text-align: left;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.direct-letter-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0px;
+  background: transparent;
+}
+
+/* =========================================================
+   MINIMALISTIC WHITEST-PINK TYPOGRAPHY
+   Clean, Elegant, Perfectly Proportioned Font
+   ========================================================= */
+.letter-whitest-pink-text {
+  font-family: 'Nunito', 'Outfit', 'Playfair Display', -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff2f6; /* Whitest-pink clean tone */
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+  letter-spacing: 0.025em;
+  text-shadow: 0 0 14px rgba(255, 120, 150, 0.35), 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.typewriter-blinking-cursor {
+  display: inline-block;
+  font-size: 0.9em;
+  margin-left: 3px;
+  color: #ff6b8b;
+  animation: cursorBlink 0.75s ease-in-out infinite alternate;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 6px rgba(255, 107, 139, 0.8));
+}
+
+@keyframes cursorBlink {
+  0% { opacity: 0.2; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* =========================================================
+   BOTTOM CONTROLS BAR (SMALL COMPACT RIGHT CORNER NEXT)
+   ========================================================= */
+.letter-bottom-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  z-index: 25;
+}
+
+.letter-aux-controls {
+  display: flex;
+  align-items: center;
+}
+
+.btn-letter-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.26rem 0.75rem;
+  background: rgba(75, 10, 25, 0.65);
+  border: 1px solid rgba(255, 133, 162, 0.45);
+  border-radius: var(--radius-full);
+  color: #ffd6e0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  transition: all var(--transition-fast);
+}
+
+.btn-letter-control:hover {
+  background: rgba(110, 18, 40, 0.85);
+  border-color: #ff477e;
+  color: #ffffff;
+  transform: scale(1.04);
+}
+
+/* Small Bottom-Right Corner Next Button */
+.btn-corner-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 1.05rem;
+  background: rgba(255, 71, 126, 0.9);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-full);
+  box-shadow: 0 3px 14px rgba(255, 71, 126, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-spring);
+}
+
+.btn-corner-next:hover {
+  transform: scale(1.08) translateY(-1px);
+  background: #ff3366;
+  border-color: #ffffff;
+  box-shadow: 0 5px 18px rgba(255, 51, 102, 0.6);
+}
+
+.btn-corner-next:active {
+  transform: scale(0.96);
+}
+
+.corner-next-text {
+  font-family: 'Nunito', 'Fredoka', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.corner-next-icon {
+  stroke-width: 2.5;
+}
+
+/* =========================================================
+   TABLET & DESKTOP ENHANCEMENTS
+   ========================================================= */
+@media (min-width: 768px) {
+  .love-letter-viewport {
+    max-width: 660px;
+    padding: 4.5vh 2rem 3vh 2rem;
+  }
+
+  .direct-letter-container {
+    max-height: 86vh;
+  }
+
+  .letter-whitest-pink-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .btn-corner-next {
+    padding: 0.45rem 1.25rem;
+  }
+
+  .corner-next-text {
+    font-size: 0.9rem;
+  }
+}

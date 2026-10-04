@@ -1,0 +1,486 @@
+/* =========================================================
+   PAGE 1: HAPPY BIRTHDAY MY LOVE (CANVA DOODLE STYLE)
+   Strict 100vh viewport, Fredoka doodle font, arched header,
+   center couple photo circle, bottom I LOVE YOU, and corner stickers
+   ========================================================= */
+
+.intro-love-page {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  /* Soft Pastel Cream / Blush Pink Backdrop matching reference */
+  background: radial-gradient(circle at center, #fffbfc 0%, #fdf3f6 60%, #fae6ec 100%);
+  user-select: none;
+}
+
+/* --- Ambient Floating Background Sparkles --- */
+.intro-ambient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Big Pink Heart Background - 10% Opacity (Centered) */
+.bg-big-pink-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(94vw, 540px);
+  height: min(94vw, 540px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.10; /* Exactly 10% opacity */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.big-pink-heart-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 30px rgba(255, 71, 126, 0.4));
+}
+
+.bg-sparkle {
+  position: absolute;
+  font-size: 1.85rem;
+  opacity: 0.85;
+}
+
+/* .sp-1 {
+  top: 12%;
+  left: 10%;
+  animation: sparkle 2.4s infinite ease-in-out;
+}
+
+.sp-2 {
+  top: 20%;
+  right: 12%;
+  animation: float 3.2s infinite ease-in-out;
+}
+
+.sp-3 {
+  bottom: 25%;
+  left: 8%;
+  animation: sparkle 2.8s infinite ease-in-out 0.6s;
+}
+
+.sp-4 {
+  bottom: 28%;
+  right: 10%;
+  animation: float 3.5s infinite ease-in-out 0.3s;
+} */
+
+/* --- Floating Romantic Love Doodles Layer --- */
+.intro-love-doodles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.intro-doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 6px rgba(255, 77, 121, 0.22));
+}
+
+.id-top-left {
+  top: 3%;
+  left: 4%;
+}
+
+.id-top-right {
+  top: 3%;
+  right: 5%;
+}
+
+.id-top-sparkle {
+  top: 14%;
+  right: 18%;
+}
+
+.id-mid-left {
+  top: 48%;
+  left: 3.5%;
+}
+
+.id-mid-right {
+  top: 42%;
+  right: 3.5%;
+}
+
+.id-photo-flower {
+  top: 32%;
+  right: 14%;
+}
+
+.id-photo-bow {
+  top: 32%;
+  left: 14%;
+}
+
+.id-bottom-sparkle {
+  bottom: 12%;
+  left: 24%;
+}
+
+/* --- Main Content Wrapper (Strict 100vh vertical distribution) --- */
+.intro-love-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  max-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5vh 1rem 2vh 1rem;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   TOP ARCHED HEADER: "HAPPY BIRTHDAY MY LOVE"
+   ========================================================= */
+.intro-header-arch-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-arch-svg {
+  width: 100%;
+  height: auto;
+  max-height: 110px;
+  overflow: visible;
+}
+
+.intro-arch-text {
+  font-family: 'Fredoka', 'Chewy', 'DynaPuff', 'Nunito', cursive, sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  fill: #c92a2a;
+  /* Solid vibrant red */
+  stroke: #5c1414;
+  /* Dark red contour stroke matching reference */
+  stroke-width: 1.8px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  letter-spacing: 0.06em;
+  filter: drop-shadow(0 2px 4px rgba(92, 20, 20, 0.2));
+}
+
+/* Letter-by-Letter Reveal Animation */
+.arch-letter-char {
+  opacity: 0;
+  animation: archLetterReveal 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes archLetterReveal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.arch-doodle-sparkle-left {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 1.25rem;
+}
+
+.arch-doodle-sparkle-center {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.25rem;
+}
+
+.arch-doodle-sparkle-right {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.25rem;
+}
+
+/* =========================================================
+   CENTER STAGE: COUPLE PHOTO CIRCLE WITH SOFT HEART GLOW
+   ========================================================= */
+.intro-center-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0 auto;
+  transform: translateY(-2.8vh); /* Visually centralize photo frame */
+}
+
+.intro-photo-circle-frame {
+  position: relative;
+  z-index: 5;
+  width: clamp(215px, 34vh, 285px);
+  height: clamp(215px, 34vh, 285px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.intro-photo-glow-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(255, 148, 180, 0.4), rgba(255, 209, 220, 0.6));
+  filter: blur(8px);
+  z-index: 1;
+}
+
+.intro-photo-circle-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  border: 4.5px solid #ffffff;
+  box-shadow: 0 10px 28px rgba(201, 42, 42, 0.22), 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.intro-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+.photo-corner-heart {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 1.8rem;
+  z-index: 10;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+/* =========================================================
+   BOTTOM HEADER: "I LOVE YOU"
+   ========================================================= */
+.intro-bottom-text-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 6vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-i-love-you-text {
+  font-family: 'Fredoka', 'Chewy', 'DynaPuff', 'Nunito', cursive, sans-serif;
+  font-size: clamp(2.2rem, 7.4vw, 3.4rem);
+  font-weight: 900;
+  color: #c92a2a;
+  -webkit-text-stroke: 1.8px #5c1414;
+  text-shadow: 2.5px 3px 0px #5c1414, 0 6px 14px rgba(92, 20, 20, 0.25);
+  letter-spacing: 0.08em;
+  margin: 0;
+  line-height: 1.05;
+}
+
+/* =========================================================
+   CORNER STICKERS & GIFS (Bubu & Dudu)
+   ========================================================= */
+
+/* Bottom-Left Sticker (Happy Dancing Dudu) */
+.intro-sticker-bottom-left {
+  position: absolute;
+  bottom: 0.5vh;
+  left: 1.2vw;
+  width: clamp(80px, 12.5vh, 105px);
+  height: clamp(80px, 12.5vh, 105px);
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+}
+
+.bubu-dudu-corner-sticker {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sticker-heart-float {
+  position: absolute;
+  top: -12px;
+  right: 10px;
+  font-size: 1.3rem;
+}
+
+/* Bottom-Right Hugging GIF */
+.intro-gif-bottom-right {
+  position: absolute;
+  bottom: 0.5vh;
+  right: 1.2vw;
+  width: clamp(84px, 13vh, 110px);
+  height: clamp(84px, 13vh, 110px);
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+}
+
+.dudu-bubu-hug-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gif-hearts-trail {
+  position: absolute;
+  top: -16px;
+  left: 5px;
+  display: flex;
+  gap: 4px;
+}
+
+.trail-heart {
+  font-size: 1.2rem;
+}
+
+/* =========================================================
+   INTERACTIVE "CLICK ME / NEXT" TRIGGER (Middle-Right / Floating)
+   ========================================================= */
+.intro-next-action-wrapper {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  z-index: 30;
+}
+
+@media (max-width: 480px) {
+  .intro-next-action-wrapper {
+    right: 0.75rem;
+    top: 35%;
+  }
+}
+
+.intro-btn-next {
+  background: #ff5277;
+  border: 2px solid #ffffff;
+  border-radius: var(--radius-full);
+  padding: 0.45rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 4px 14px rgba(255, 82, 119, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all var(--transition-spring);
+  user-select: none;
+}
+
+.intro-btn-next:hover {
+  transform: scale(1.1) translateY(-2px);
+  background: #e03131;
+  box-shadow: 0 6px 18px rgba(224, 49, 49, 0.45);
+}
+
+.intro-btn-next:active {
+  transform: scale(0.95);
+}
+
+.btn-next-hand {
+  font-size: 1rem;
+}
+
+.btn-next-label {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.btn-next-heart {
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   DESKTOP / TABLET RESPONSIVENESS
+   ========================================================= */
+@media (min-width: 768px) {
+  .intro-love-content {
+    max-width: 620px;
+    padding: 2.5vh 2rem;
+  }
+
+  .intro-arch-text {
+    font-size: 30px;
+  }
+
+  .intro-photo-circle-frame {
+    width: clamp(260px, 42vh, 340px);
+    height: clamp(260px, 42vh, 340px);
+  }
+
+  .intro-sticker-bottom-left {
+    width: 135px;
+    height: 135px;
+    left: 2rem;
+  }
+
+  .intro-gif-bottom-right {
+    width: 145px;
+    height: 145px;
+    right: 2rem;
+  }
+}

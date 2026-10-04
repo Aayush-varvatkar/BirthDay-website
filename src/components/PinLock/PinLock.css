@@ -1,0 +1,715 @@
+/* =========================================================
+   ROMANTIC PINK LOCK SCREEN
+   100vh strict fit, wavy SVG border keypad, typed numbers,
+   pink striped wallpaper, love doodles, enlarged couple frame,
+   and separate plain-pink Wrong Passcode Screen
+   ========================================================= */
+
+.lock-canvas {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Strict 100vh no scroll */
+  padding: 0.5vh 0;
+  
+  /* Romantic Pastel Pink Vertical Stripes Wallpaper */
+  background: repeating-linear-gradient(
+    90deg,
+    #ffccd5 0px,
+    #ffccd5 38px,
+    #fff0f3 38px,
+    #fff0f3 76px
+  );
+  transition: background 0.4s ease, opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Plain Soft Pink Background on Error Screen */
+.lock-canvas.plain-pink-bg {
+  background: #fbf1f4 !important;
+}
+
+.lock-canvas.lock-screen-unlocked {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+/* =========================================================
+   SEPARATE WRONG PASSCODE SCREEN (Clean Plain Pink, Simple Doodle Text)
+   ========================================================= */
+.wrong-passcode-view {
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 50;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.wrong-passcode-card {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  gap: 1.25rem;
+}
+
+/* Curved Doodle SVG Header (Single Solid Color, No Shadows) */
+.wrong-header-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -0.5rem;
+}
+
+.curved-title-svg {
+  width: 100%;
+  max-width: 415px;
+  height: auto;
+  overflow: visible;
+  user-select: none;
+}
+
+.curved-doodle-letter {
+  font-family: 'Nunito', 'Quicksand', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  fill: #c92a2a; /* Clean solid red, single color, no shadow */
+  letter-spacing: 0.15em; /* Increased letter spacing */
+  opacity: 0;
+  animation: letterDoodlePop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+@keyframes letterDoodlePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  80% {
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* GIF Wrapper in Center */
+.wrong-gif-wrapper {
+  position: relative;
+  width: clamp(210px, 32vh, 270px);
+  height: clamp(210px, 32vh, 270px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrong-dudu-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 5;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.1));
+}
+
+.wrong-gif-heart-1 {
+  position: absolute;
+  left: 10px;
+  top: 45%;
+  font-size: 1.6rem;
+  z-index: 10;
+}
+
+.wrong-gif-heart-2 {
+  position: absolute;
+  right: 15px;
+  top: 35%;
+  font-size: 1.7rem;
+  z-index: 10;
+}
+
+/* TRY AGAIN Button (Matching reference photo) */
+.wrong-action-footer {
+  margin-top: 0.25rem;
+}
+
+.btn-try-again {
+  background: #e03131;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 14px rgba(224, 49, 49, 0.35);
+  border-radius: var(--radius-full);
+  padding: 0.55rem 2.6rem;
+  cursor: pointer;
+  transition: all var(--transition-spring);
+  user-select: none;
+}
+
+.btn-try-again:hover {
+  transform: scale(1.06);
+  background: #c92a2a;
+}
+
+.btn-try-again:active {
+  transform: scale(0.95);
+}
+
+.btn-try-again-text {
+  font-family: 'Nunito', 'Quicksand', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+/* =========================================================
+   MAIN LOCK SCREEN AMBIENT & LAYOUT
+   ========================================================= */
+
+/* --- Ambient Floating Love Doodles Layer --- */
+.lock-floating-doodles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.ambient-doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 6px rgba(255, 77, 121, 0.2));
+}
+
+.doodle-top-left {
+  top: 2%;
+  left: 3%;
+}
+
+.doodle-top-right {
+  top: 3%;
+  right: 4%;
+}
+
+.doodle-mid-left {
+  top: 42%;
+  left: 3%;
+}
+
+.doodle-mid-right {
+  top: 35%;
+  right: 3%;
+}
+
+.doodle-bottom-right {
+  bottom: 2%;
+  right: 5%;
+}
+
+.doodle-sparkle-1 {
+  top: 12%;
+  right: 16%;
+}
+
+.doodle-sparkle-2 {
+  bottom: 10%;
+  left: 6%;
+}
+
+/* --- Main Layout Wrapper: Strict 100vh Fit --- */
+.lock-layout-wrapper {
+  width: 100%;
+  height: 100%;
+  max-height: 100dvh;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5vh 0.75rem;
+  margin: auto;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .lock-layout-wrapper {
+    max-width: 960px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
+  }
+}
+
+/* --- Left / Top Section --- */
+.lock-left-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .lock-left-section {
+    width: 55%;
+  }
+}
+
+/* Top Composition: Circle (~30-33% viewport height) + Overlaid Text */
+.lock-top-composition {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .lock-top-composition {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/* Scalloped Circle Anchor - Increased by ~9% */
+.lock-circle-anchor {
+  width: clamp(231px, 37vh, 300px);
+  height: clamp(231px, 37vh, 300px);
+  margin-left: 1rem;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .lock-circle-anchor {
+    width: clamp(300px, 43.5vh, 387px);
+    height: clamp(300px, 43.5vh, 387px);
+    margin-left: 0;
+  }
+}
+
+.circle-doodle-sparkle {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  z-index: 5;
+  filter: drop-shadow(0 2px 4px rgba(255, 51, 102, 0.3));
+}
+
+/* Scalloped Frame SVG container */
+.scallop-frame-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 18px rgba(114, 82, 181, 0.28));
+  transition: transform var(--transition-spring);
+}
+
+.scallop-frame-container:hover {
+  transform: scale(1.02) rotate(-1deg);
+}
+
+.scallop-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.scallop-photo-crop {
+  width: 68%;
+  height: 68%;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  border: 3.5px solid #ffffff;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+
+.scallop-inner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+/* Headline Container: 'unlock' on the bottom-right edge of circle, rest below */
+.lock-headline-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: -3.2rem;
+  margin-left: auto;
+  padding-right: 1.25rem;
+  text-align: right;
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .lock-headline-container {
+    margin-top: 0;
+    margin-left: 0;
+    padding-right: 0;
+    text-align: left;
+  }
+}
+
+.headline-text-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.headline-doodle-kiss {
+  position: absolute;
+  top: -10px;
+  right: -14px;
+}
+
+.lock-text-unlock {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(3rem, 9.5vw, 4.6rem);
+  font-weight: 900;
+  line-height: 0.88;
+  color: #7252b5;
+  letter-spacing: -0.03em;
+  text-shadow: 2.5px 2.5px 0px rgba(255, 255, 255, 0.95), 4px 4px 12px rgba(114, 82, 181, 0.2);
+  margin: 0;
+}
+
+.lock-text-surprise {
+  font-family: 'Great Vibes', 'Caveat', cursive;
+  font-size: clamp(2.3rem, 7.5vw, 3.8rem);
+  color: #8c67ce;
+  line-height: 1.05;
+  margin-top: -0.2rem;
+  text-shadow: 1.5px 1.5px 0px rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+/* --- Right / Bottom Section (Wavy Keypad Card) --- */
+.lock-right-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 15;
+}
+
+@media (min-width: 768px) {
+  .lock-right-section {
+    width: 40%;
+  }
+}
+
+/* Wavy Scalloped Card Wrapper */
+.scalloped-keypad-card {
+  width: 88%;
+  max-width: 340px;
+  margin: 0 auto;
+  position: relative;
+  user-select: none;
+}
+
+/* SVG Wavy Border Background */
+.wavy-card-bg-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  filter: drop-shadow(0 10px 24px rgba(114, 82, 181, 0.2));
+  pointer-events: none;
+}
+
+.wavy-card-inner-content {
+  position: relative;
+  z-index: 5;
+  padding: 1.35rem 1.25rem 0.9rem 1.25rem;
+  text-align: center;
+}
+
+.keypad-card-doodle-top {
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  z-index: 10;
+}
+
+/* Bubu & Dudu Mascot GIF Sticker: Top-Left (Half on box, half outside) */
+.bubu-dudu-top-sticker {
+  position: absolute;
+  top: -36px;
+  left: -26px;
+  width: 102px;
+  height: 102px;
+  z-index: 30;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+}
+
+@media (min-width: 768px) {
+  .bubu-dudu-top-sticker {
+    top: -44px;
+    left: -32px;
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.bubu-dudu-top-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Dudu Mascot GIF Sticker: Bottom-Left (Half on box, half outside) */
+.dudu-keypad-sticker {
+  position: absolute;
+  bottom: -22px;
+  left: -30px;
+  width: 114px;
+  height: 114px;
+  z-index: 30;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.2));
+}
+
+@media (min-width: 768px) {
+  .dudu-keypad-sticker {
+    bottom: -26px;
+    left: -38px;
+    width: 132px;
+    height: 132px;
+  }
+}
+
+.dudu-gif-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Birthday Party Hat on Dudu */
+.dudu-party-hat {
+  position: absolute;
+  top: -4px;
+  left: 38px;
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 22px solid #3b60e4;
+  transform: rotate(14deg);
+  z-index: 32;
+}
+
+.dudu-party-hat::after {
+  content: '⭐';
+  position: absolute;
+  top: 5px;
+  left: -5px;
+  font-size: 8px;
+  color: #ffd166;
+}
+
+.dudu-party-hat::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: #ff6b8b;
+}
+
+/* Passcode Header */
+.passcode-header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #7252b5;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* Passcode Indicator Boxes Showing Typed Numbers */
+.passcode-boxes-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 0.85rem;
+}
+
+.passcode-box {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #8e68cf;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.passcode-box.filled {
+  background: #ecdcfc;
+  border-color: #7252b5;
+  transform: scale(1.08);
+  box-shadow: 0 3px 8px rgba(114, 82, 181, 0.25);
+}
+
+.passcode-typed-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #7252b5;
+  line-height: 1;
+}
+
+.passcode-box.unlocked {
+  background: #d3f9d8;
+  border-color: #2b8a3e;
+}
+
+.passcode-box.unlocked .passcode-typed-num {
+  color: #2b8a3e;
+}
+
+/* Keypad Grid */
+.passcode-keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem 0.85rem;
+  margin: 0.15rem auto 0.85rem auto;
+  max-width: 230px;
+}
+
+.passcode-key-btn {
+  background: transparent;
+  border: none;
+  color: #7252b5;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  border-radius: var(--radius-sm);
+}
+
+.passcode-key-btn:hover {
+  transform: scale(1.2);
+  color: #55349e;
+}
+
+.passcode-key-btn:active {
+  transform: scale(0.92);
+}
+
+.passcode-key-btn.special-key {
+  font-size: 1.5rem;
+  color: #9c7dd9;
+}
+
+.key-char {
+  display: inline-block;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.passcode-key-btn.special-key .key-char {
+  text-decoration: none;
+}
+
+/* Oval Enter Action Pill */
+.passcode-enter-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.passcode-enter-pill {
+  border: 2px solid #7252b5;
+  background: transparent;
+  color: #7252b5;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.3rem 2.2rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-spring);
+  letter-spacing: 0.04em;
+}
+
+.passcode-enter-pill:hover {
+  background: #7252b5;
+  color: #ffffff;
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(114, 82, 181, 0.25);
+}
+
+.passcode-enter-pill.ready {
+  background: #7252b5;
+  color: #ffffff;
+  animation: pulseHeart 2s infinite;
+}
+
+.passcode-enter-pill:active {
+  transform: scale(0.95);
+}

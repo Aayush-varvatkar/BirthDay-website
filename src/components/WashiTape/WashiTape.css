@@ -1,0 +1,73 @@
+.washi-tape {
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1px);
+  opacity: 0.85;
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    98% 25%, 100% 50%, 98% 75%, 100% 100%,
+    0% 100%,
+    2% 75%, 0% 50%, 2% 25%
+  );
+  pointer-events: none;
+}
+
+/* Colors */
+.washi-pink {
+  background-color: var(--washi-pink);
+}
+
+.washi-yellow {
+  background-color: var(--washi-yellow);
+}
+
+.washi-lavender {
+  background-color: var(--washi-lavender);
+}
+
+.washi-mint {
+  background-color: var(--washi-mint);
+}
+
+.washi-peach {
+  background-color: var(--washi-peach);
+}
+
+/* Patterns */
+.washi-pattern-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(255, 255, 255, 0.4) 6px,
+    rgba(255, 255, 255, 0.4) 12px
+  );
+}
+
+.washi-pattern-dots {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.6) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 8px 8px;
+}
+
+/* Positions */
+.washi-pos-top-center {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.washi-pos-top-left {
+  top: -10px;
+  left: -10px;
+  transform: rotate(-15deg);
+}
+
+.washi-pos-top-right {
+  top: -10px;
+  right: -10px;
+  transform: rotate(15deg);
+}

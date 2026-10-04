@@ -1,0 +1,314 @@
+/* =========================================================
+   BIRTHDAY WISH PAGE: Interactive Cake & Candle
+   ========================================================= */
+
+.birthday-wish-page {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: radial-gradient(circle at center, #fffbfc 0%, #fdf3f6 60%, #fae6ec 100%);
+  user-select: none;
+}
+
+/* Ambient Background */
+.wish-ambient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wish-doodles-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.wish-doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 6px rgba(255, 77, 121, 0.22));
+}
+
+.wd-top-left {
+  top: 3%;
+  left: 4%;
+}
+
+.wd-top-right {
+  top: 3%;
+  right: 5%;
+}
+
+.wd-mid-left {
+  top: 45%;
+  left: 3.5%;
+}
+
+.wd-mid-right {
+  top: 42%;
+  right: 3.5%;
+}
+
+.wd-bottom-sparkle {
+  bottom: 12%;
+  left: 12%;
+}
+
+/* Main Content Wrapper (Strict 100vh vertical distribution) */
+.wish-page-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  max-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6vh 1.25rem 4vh 1.25rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Header */
+.wish-header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1vh;
+}
+
+.wish-title-main {
+  font-family: 'Fredoka', 'Chewy', 'DynaPuff', 'Nunito', cursive, sans-serif;
+  font-size: clamp(2rem, 6.5vw, 2.8rem);
+  font-weight: 900;
+  color: #c92a2a;
+  -webkit-text-stroke: 1.8px #5c1414;
+  text-shadow: 2px 3px 0px #5c1414, 0 6px 14px rgba(92, 20, 20, 0.2);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.wish-subtitle {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+  font-weight: 600;
+  color: #a61e4d;
+  margin: 0;
+  max-width: 320px;
+  line-height: 1.35;
+}
+
+/* Cake Stage */
+.wish-cake-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  flex: 1;
+}
+
+.cake-glow-backdrop {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(255, 212, 59, 0.3) 0%, rgba(255, 107, 139, 0.15) 60%, transparent 80%);
+  filter: blur(25px);
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.wish-cake-interactive {
+  position: relative;
+  z-index: 5;
+  cursor: pointer;
+  transition: transform var(--transition-spring);
+}
+
+.wish-cake-interactive:hover {
+  transform: scale(1.08);
+}
+
+.wish-cake-interactive:active {
+  transform: scale(0.95);
+}
+
+.wish-cake-svg {
+  filter: drop-shadow(0 8px 18px rgba(92, 20, 20, 0.15));
+}
+
+/* Hint & Granted Badges */
+.wish-tap-hint {
+  margin-top: 1rem;
+  background: #fff9db;
+  border: 2px dashed #f59f00;
+  color: #d9480f;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(245, 159, 0, 0.2);
+  z-index: 10;
+}
+
+.wish-granted-badge {
+  margin-top: 0.75rem;
+  background: #e6fcf5;
+  border: 2.5px solid #20c997;
+  color: #0ca678;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 14px rgba(32, 201, 151, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  z-index: 10;
+  max-width: 320px;
+}
+
+.wish-granted-main {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #099268;
+}
+
+.wish-granted-sub {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #2b8a3e;
+}
+
+.wish-relight-link {
+  background: none;
+  border: none;
+  color: #868e96;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 0.25rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.wish-relight-link:hover {
+  color: #495057;
+}
+
+/* Mascot Corner */
+.wish-mascot-corner {
+  position: absolute;
+  bottom: 0%;
+  right: 5%;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.wish-mascot-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+}
+
+/* Bottom Action Button */
+.wish-bottom-action-wrapper {
+  margin-bottom: 3vh;
+  position: relative;
+  z-index: 20;
+}
+
+.wish-btn-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 2.4rem;
+  background: #ff477e;
+  border: 3.5px solid #ffffff;
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 20px rgba(255, 71, 126, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-spring);
+}
+
+.wish-btn-next:hover {
+  transform: scale(1.08) translateY(-2px);
+  background: #ff3366;
+  box-shadow: 0 8px 25px rgba(255, 51, 102, 0.55);
+}
+
+.wish-btn-next:active {
+  transform: scale(0.96);
+}
+
+.wish-btn-next .btn-next-hand {
+  font-size: 1.3rem;
+}
+
+.wish-btn-next .btn-next-label {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wish-btn-next .btn-next-heart {
+  font-size: 1.3rem;
+}
+
+@media (min-width: 768px) {
+  .wish-page-content {
+    max-width: 600px;
+    padding: 7vh 2rem 5vh 2rem;
+  }
+
+  .wish-title-main {
+    font-size: 3.2rem;
+  }
+
+  .wish-cake-svg {
+    width: 200px;
+    height: 200px;
+  }
+
+  .wish-mascot-img {
+    width: 120px;
+    height: 120px;
+  }
+}

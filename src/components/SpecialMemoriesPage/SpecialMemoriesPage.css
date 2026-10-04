@@ -1,0 +1,642 @@
+/* =========================================================
+   SPECIAL MEMORIES PAGE: 3D Coverflow Photo Carousel
+   Romantic Deep Burgundy & Ruby Glow Aesthetic
+   ========================================================= */
+
+.special-memories-page {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  
+  /* Deep cinematic burgundy to velvet black gradient */
+  background: radial-gradient(circle at 50% 15%, #38030f 0%, #1f0108 45%, #080003 100%);
+  user-select: none;
+}
+
+/* --- Ambient Glowing Orbs & Sparkles --- */
+.memories-ambient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.memories-crimson-aura {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.2) 0%, rgba(255, 75, 110, 0.08) 50%, transparent 75%);
+  filter: blur(40px);
+  animation: auraPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes auraPulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.memories-glow-orb-top {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(255, 51, 102, 0.15) 0%, transparent 70%);
+  filter: blur(35px);
+}
+
+.memories-sparkle-dot {
+  position: absolute;
+  color: rgba(255, 204, 213, 0.65);
+  font-size: 0.9rem;
+  pointer-events: none;
+  animation: sparkleTwinkle 3.5s ease-in-out infinite alternate;
+}
+
+.s-1 { top: 12%; left: 15%; animation-delay: 0.2s; font-size: 1.1rem; }
+.s-2 { top: 18%; right: 18%; animation-delay: 1.1s; font-size: 0.85rem; }
+.s-3 { bottom: 25%; left: 12%; animation-delay: 1.8s; font-size: 1rem; }
+.s-4 { bottom: 20%; right: 14%; animation-delay: 0.7s; font-size: 0.9rem; }
+
+@keyframes sparkleTwinkle {
+  0% { opacity: 0.2; transform: scale(0.8) rotate(0deg); }
+  50% { opacity: 0.85; transform: scale(1.2) rotate(15deg); }
+  100% { opacity: 0.3; transform: scale(0.9) rotate(0deg); }
+}
+
+/* --- Main Vertical Content Wrapper --- */
+.special-memories-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  max-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5vh 1rem 4vh 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* =========================================================
+   HEADER: "Special Memories"
+   ========================================================= */
+.memories-header-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1vh;
+}
+
+.memories-title {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.1rem, 6.8vw, 2.85rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff0f3;
+  text-shadow: 0 0 24px rgba(255, 75, 110, 0.45), 0 2px 8px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.memories-divider-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 220px;
+  margin: 0.4rem 0 0.35rem 0;
+}
+
+.line-arm {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 154, 179, 0.5), transparent);
+}
+
+.divider-diamond {
+  color: #ff85a2;
+  font-size: 0.75rem;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(255, 133, 162, 0.8);
+}
+
+.memories-subtitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(0.92rem, 3.2vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #d8839b;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   CENTER: 3D COVERFLOW PHOTO CAROUSEL STAGE
+   ========================================================= */
+.memories-carousel-stage {
+  position: relative;
+  width: 100%;
+  height: 48vh;
+  min-height: 300px;
+  max-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  perspective: 1200px;
+  user-select: none;
+  cursor: grab;
+}
+
+.memories-carousel-stage:active {
+  cursor: grabbing;
+}
+
+/* Navigation Chevrons */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(45, 8, 18, 0.65);
+  border: 1.5px solid rgba(255, 107, 139, 0.4);
+  color: #ffccd5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-nav-btn:hover {
+  background: rgba(90, 15, 35, 0.85);
+  border-color: #ff477e;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 16px rgba(255, 71, 126, 0.5);
+}
+
+.carousel-nav-btn.prev-btn {
+  left: 2%;
+}
+
+.carousel-nav-btn.next-btn {
+  right: 2%;
+}
+
+/* Cards Track Container */
+.carousel-cards-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Individual Carousel Photo Card */
+.carousel-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(190px, 58vw, 245px);
+  height: clamp(270px, 42vh, 360px);
+  border-radius: 20px;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, filter 0.5s ease;
+  will-change: transform, opacity, filter;
+  cursor: pointer;
+}
+
+.card-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1a0005;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75);
+}
+
+.card-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.card-photo-glow-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 107, 139, 0.4);
+  pointer-events: none;
+  transition: border-color 0.4s ease;
+}
+
+.card-vignette-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 35%;
+  background: linear-gradient(to top, rgba(15, 0, 4, 0.6) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* --- Card Position Classes (3D Coverflow) --- */
+
+/* CENTER / ACTIVE CARD */
+.carousel-card.card-center {
+  transform: translate(-50%, -50%) scale(1.05) translateZ(0px);
+  opacity: 1;
+  filter: brightness(1.03) contrast(1.02);
+  z-index: 10;
+}
+
+.carousel-card.card-center .card-photo-frame {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), 0 0 28px rgba(220, 38, 38, 0.45);
+}
+
+.carousel-card.card-center .card-photo-glow-border {
+  border: 2.2px solid rgba(255, 107, 139, 0.75);
+  box-shadow: inset 0 0 12px rgba(255, 77, 121, 0.3);
+}
+
+/* PREVIOUS CARD (LEFT) */
+.carousel-card.card-prev {
+  transform: translate(calc(-50% - clamp(110px, 32vw, 155px)), -50%) scale(0.85) rotateZ(-6deg) rotateY(18deg);
+  opacity: 0.68;
+  filter: brightness(0.68) blur(0.3px);
+  z-index: 5;
+}
+
+.carousel-card.card-prev:hover {
+  opacity: 0.88;
+  filter: brightness(0.88);
+  transform: translate(calc(-50% - clamp(110px, 32vw, 155px)), -50%) scale(0.88) rotateZ(-4deg) rotateY(14deg);
+}
+
+/* NEXT CARD (RIGHT) */
+.carousel-card.card-next {
+  transform: translate(calc(-50% + clamp(110px, 32vw, 155px)), -50%) scale(0.85) rotateZ(6deg) rotateY(-18deg);
+  opacity: 0.68;
+  filter: brightness(0.68) blur(0.3px);
+  z-index: 5;
+}
+
+.carousel-card.card-next:hover {
+  opacity: 0.88;
+  filter: brightness(0.88);
+  transform: translate(calc(-50% + clamp(110px, 32vw, 155px)), -50%) scale(0.88) rotateZ(4deg) rotateY(-14deg);
+}
+
+/* HIDDEN CARDS */
+.carousel-card.card-hidden {
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- Pagination Dots --- */
+.carousel-dots-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 154, 179, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.carousel-dot.active {
+  width: 22px;
+  background: #ff477e;
+  box-shadow: 0 0 10px rgba(255, 71, 126, 0.7);
+}
+
+/* =========================================================
+   BOTTOM: GLOWING RUBY LETTER BUTTON ("✎ ... MESSAGE")
+   ========================================================= */
+.memories-bottom-action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.2vh;
+  position: relative;
+  z-index: 25;
+}
+
+.btn-letter-message {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.95rem;
+  border-radius: var(--radius-full);
+  background: radial-gradient(ellipse at center, rgba(80, 12, 28, 0.9) 0%, rgba(35, 4, 12, 0.96) 100%);
+  border: 1.8px solid rgba(255, 80, 115, 0.65);
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.38), inset 0 0 12px rgba(255, 51, 102, 0.2);
+  color: #fff0f3;
+  cursor: pointer;
+  user-select: none;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-spring);
+}
+
+.btn-letter-message:hover {
+  transform: scale(1.06) translateY(-2px);
+  background: radial-gradient(ellipse at center, rgba(110, 18, 40, 0.95) 0%, rgba(50, 6, 18, 0.98) 100%);
+  border-color: #ff4d79;
+  box-shadow: 0 0 28px rgba(255, 77, 121, 0.6), inset 0 0 16px rgba(255, 77, 121, 0.3);
+}
+
+.btn-letter-message:active {
+  transform: scale(0.96);
+}
+
+.btn-letter-icon {
+  font-size: 0.95rem;
+  color: #ff758f;
+  filter: drop-shadow(0 0 4px rgba(255, 117, 143, 0.8));
+}
+
+.btn-letter-dots {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: #ffccd5;
+  opacity: 0.8;
+}
+
+.btn-letter-text {
+  font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 117, 143, 0.6);
+  line-height: 1;
+}
+
+/* =========================================================
+   TABLET & DESKTOP ENHANCEMENTS
+   ========================================================= */
+@media (min-width: 768px) {
+  .special-memories-content {
+    max-width: 650px;
+    padding: 6vh 2rem 4vh 2rem;
+  }
+
+  .memories-title {
+    font-size: 3.2rem;
+  }
+
+  .memories-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .memories-carousel-stage {
+    height: 52vh;
+    max-height: 480px;
+  }
+
+  .carousel-card {
+    width: 260px;
+    height: 380px;
+  }
+
+  .carousel-card.card-prev {
+    transform: translate(calc(-50% - 180px), -50%) scale(0.85) rotateZ(-6deg) rotateY(18deg);
+  }
+
+  .carousel-card.card-prev:hover {
+    transform: translate(calc(-50% - 180px), -50%) scale(0.88) rotateZ(-4deg) rotateY(14deg);
+  }
+
+  .carousel-card.card-next {
+    transform: translate(calc(-50% + 180px), -50%) scale(0.85) rotateZ(6deg) rotateY(-18deg);
+  }
+
+  .carousel-card.card-next:hover {
+    transform: translate(calc(-50% + 180px), -50%) scale(0.88) rotateZ(4deg) rotateY(-14deg);
+  }
+
+  .btn-letter-message {
+    padding: 0.65rem 2.4rem;
+  }
+
+  .btn-letter-text {
+    font-size: 1.05rem;
+  }
+}
+
+/* =========================================================
+   CINEMATIC HEART TRANSITION: RISING & FULLSCREEN EXPANSION
+   ========================================================= */
+.heart-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-transition-veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, #c92a2a 0%, #800016 55%, #2b0007 100%);
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 502;
+}
+
+.heart-transition-veil.active {
+  opacity: 1;
+}
+
+.floating-transition-heart {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  z-index: 510;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+}
+
+.rising-heart-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 18px rgba(255, 30, 66, 0.95)) drop-shadow(0 0 35px rgba(255, 75, 110, 0.8));
+}
+
+.heart-pulse-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(255, 51, 102, 0.6) 0%, transparent 70%);
+  filter: blur(10px);
+  animation: pulseGlow 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 1; }
+}
+
+/* Stage 1: Rising slowly from bottom to center */
+.floating-transition-heart.rising {
+  animation: heartFloatToCenter 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes heartFloatToCenter {
+  0% {
+    top: auto;
+    bottom: 35px;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0.65) rotate(-6deg);
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1) rotate(4deg);
+  }
+  60% {
+    transform: translate(-50%, 0) scale(1.15) rotate(-3deg);
+  }
+  100% {
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.4) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Stage 2: Expanding dramatically to fill whole screen */
+.floating-transition-heart.expanding {
+  top: 50%;
+  left: 50%;
+  animation: heartExpandFullScreen 0.95s cubic-bezier(0.38, 0, 0.15, 1) forwards;
+}
+
+@keyframes heartExpandFullScreen {
+  0% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(55);
+    opacity: 1;
+  }
+}
+
+/* Accompanying Trail Sparkles */
+.heart-trail-sparkle {
+  position: absolute;
+  font-size: 1.2rem;
+  z-index: 508;
+  pointer-events: none;
+  animation: trailSparkleRise 1.2s ease-out forwards;
+}
+
+.hts-1 {
+  left: calc(50% - 28px);
+  animation-delay: 0.1s;
+}
+
+.hts-2 {
+  left: calc(50% + 24px);
+  animation-delay: 0.3s;
+}
+
+.hts-3 {
+  left: calc(50% - 15px);
+  animation-delay: 0.5s;
+}
+
+@keyframes trailSparkleRise {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    bottom: 52%;
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+}

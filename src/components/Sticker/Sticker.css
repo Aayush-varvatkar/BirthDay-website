@@ -1,0 +1,114 @@
+.cute-sticker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+  border: 2px solid #ffffff;
+  box-shadow: var(--shadow-sticker);
+  transition: transform var(--transition-spring), box-shadow var(--transition-normal);
+  z-index: 5;
+}
+
+.cute-sticker.clickable {
+  cursor: pointer;
+}
+
+.cute-sticker.clickable:hover {
+  transform: scale(1.15) rotate(5deg) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cute-sticker.clickable:active {
+  transform: scale(0.95) !important;
+}
+
+.sticker-content {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.sticker-emoji {
+  line-height: 1;
+}
+
+.sticker-text {
+  font-family: var(--font-note);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Variants */
+.sticker-circle {
+  border-radius: var(--radius-full);
+}
+
+.sticker-pill {
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.75rem;
+}
+
+.sticker-stamp {
+  border-radius: 4px;
+  border: 2px dashed rgba(0, 0, 0, 0.15);
+  background: #fffdfa;
+  padding: 0.4rem 0.6rem;
+}
+
+/* Sizes */
+.sticker-size-sm {
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+}
+.sticker-pill.sticker-size-sm {
+  width: auto;
+  height: auto;
+  font-size: 0.75rem;
+}
+
+.sticker-size-md {
+  width: 44px;
+  height: 44px;
+  font-size: 1.35rem;
+}
+.sticker-pill.sticker-size-md {
+  width: auto;
+  height: auto;
+  font-size: 0.9rem;
+}
+
+.sticker-size-lg {
+  width: 60px;
+  height: 60px;
+  font-size: 1.8rem;
+}
+
+/* Colors */
+.sticker-color-pink {
+  background: #ffe3e8;
+  color: var(--color-primary-dark);
+}
+
+.sticker-color-yellow {
+  background: #fff3bf;
+  color: #b17d00;
+}
+
+.sticker-color-lavender {
+  background: #f3e8ff;
+  color: #7950f2;
+}
+
+.sticker-color-mint {
+  background: #e6fcf5;
+  color: #0ca678;
+}
+
+.sticker-color-white {
+  background: #ffffff;
+  color: var(--color-text-main);
+}
