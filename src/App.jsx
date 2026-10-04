@@ -9,6 +9,7 @@ import { RoseBloomPage } from './components/RoseBloomPage/RoseBloomPage';
 import { HuggyPage } from './components/HuggyPage/HuggyPage';
 import { FloatingBackground } from './components/FloatingBackground/FloatingBackground';
 import { DesktopFrame } from './components/DesktopFrame/DesktopFrame';
+import { BackgroundMusic } from './components/BackgroundMusic/BackgroundMusic';
 
 import './styles/global.css';
 
@@ -36,6 +37,9 @@ export function App() {
 
   return (
     <div className="app-container">
+      {/* Background YouTube Audio Stream (Matthew Ifield - I Think They Call This Love) */}
+      <BackgroundMusic videoId="CnEqrgMlWLQ" />
+
       {/* Ambient background particles */}
       <FloatingBackground />
 
